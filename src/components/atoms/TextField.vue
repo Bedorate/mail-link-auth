@@ -9,13 +9,11 @@ export default defineComponent({
   name: "TextField",
   props: {
     value: {
-      //入力される文字列
       type: String,
       required: true,
     },
     id: Number,
     label: {
-      //テキストフィールドに表示する文字列
       type: String,
       default: "",
     },
@@ -39,7 +37,7 @@ input[type="text"] {
   width: 100%;
   height: 32px;
   color: black;
-  background: white;
+  background-color: white;
   border: 2px solid black;
   outline: none;
 }

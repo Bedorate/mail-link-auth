@@ -1,8 +1,6 @@
 <template>
   <div class="form-component">
-    <div class="form-component-label">
-      {{ form.label }}
-    </div>
+    <div class="form-component-label">{{ form.label }}</div>
     <component
       :is="form.formType"
       :value="form.value"
@@ -16,21 +14,23 @@
 import { defineComponent, PropType } from "vue";
 
 import TextField from "@/components/atoms/TextField.vue";
+import PassField from "@/components/atoms/PassField.vue";
 
 export type PropFormType = {
   id: number;
   label: string;
-  value: string;
+  value: string | number;
   formType: string;
 };
+
 export default defineComponent({
   name: "FormComponent",
-  component: {
+  components: {
     TextField,
+    PassField
   },
   props: {
     form: {
-      //フォームのデータ
       type: Object as PropType<PropFormType>,
       required: true,
     },
@@ -43,5 +43,13 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss" scoped>
+.form-component {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  &-label {
+    height: 24px;
+  }
+}
 </style>

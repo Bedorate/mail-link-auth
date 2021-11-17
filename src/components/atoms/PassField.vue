@@ -34,12 +34,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-input[type="text"] {
+input[type="password"] {
   font-size: 20px;
   width: 100%;
   height: 32px;
   color: black;
-  background: white;
+  background-color: white;
   border: 2px solid black;
   outline: none;
 }

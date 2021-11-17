@@ -1,7 +1,8 @@
 <template>
   <div class="global-header">
     <div class="global-header-left">
-      <div class="global-header-left-icon" >
+      <div class="global-header-left-icon">
+        メアドにパスを送信機
       </div>
     </div>
   </div>
@@ -33,42 +34,12 @@ export default defineComponent({
     grid-template-columns: 36px auto;
     column-gap: 8px;
     &-icon {
-      width: 36px;
+      width: 200px;
       height: 36px;
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: pointer;
     }
-  }
-}
-.auth-button {
-  display: flex;
-  align-items: center;
-  &-left {
-    font-size: 15px;
-    color: orange;
-    background-color: orange;
-    display: flex;
-    border: none;
-    padding: 0px 8px;
-    cursor: pointer;
-  }
-  &-right {
-    font-size: 15px;
-    color: orange;
-    background-color: orange;
-    display: flex;
-    border: none;
-    border-left: 1px solid orange;
-    padding: 0px 8px;
-    cursor: pointer;
-  }
-
-  .header-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 8px;
   }
 }
 </style>
