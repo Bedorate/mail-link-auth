@@ -7,11 +7,10 @@
         :form="form"
         @change-value="changeFormValue"
       />
+      <div class="common-button">
+        <CommonButton :label="sendButtonLabel" />
+      </div>
     </div>
-    <div class="common-button">
-      <CommonButton :label="sendButtonLabel" />
-    </div>
-    
   </div>
 </template>
 
@@ -60,7 +59,7 @@ export default defineComponent({
     padding: 50px 100px 0px 100px;
   }
 }
-.common-button{
-  padding:50px 200px 0px 400px; 
+.common-button {
+  padding: 50px 100px 0px 100px;
 }
 </style>
