@@ -10,7 +10,7 @@
       <div class="common-button">
         <CommonButton :label="sendButtonLabel" @click-event="showPass"/>
         <div v-if="isPush">
-          {{logInDataList[0].value}}に、
+          {{logInDataList[0].value}}に
           <br>
           パスワード『{{logInDataList[1].value}}』を送信しました。
         </div>
