@@ -8,7 +8,12 @@
         @change-value="changeFormValue"
       />
       <div class="common-button">
-        <CommonButton :label="sendButtonLabel" />
+        <CommonButton :label="sendButtonLabel" @click-event="showPass"/>
+        <div v-if="isPush">
+          {{logInDataList[0].value}}に、
+          <br>
+          パスワード『{{logInDataList[1].value}}』を送信しました。
+        </div>
       </div>
     </div>
   </div>
@@ -17,8 +22,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import FormComponent from "@/components/molecules/FormComponent.vue";
+import FormComponent,{PropFormType as ILogInDataList,} from "@/components/molecules/FormComponent.vue";
 import CommonButton from "@/components/atoms/CommonButton.vue";
+
+type ILogInDataType = {
+  logInDataList:ILogInDataList[];
+  sendButtonLabel:string;
+  isPush:boolean;
+}; 
 
 export default defineComponent({
   name: "LoginForm",
@@ -26,29 +37,33 @@ export default defineComponent({
     FormComponent,
     CommonButton,
   },
-  data() {
+  data() :ILogInDataType {
     return {
       logInDataList: [
         {
-          formType: "TextField",
-          value: "",
+          id: 1, 
           label: "メールアドレス",
-          id: 1,
+          value: "",
+          formType: "TextField",
         },
         {
-          formType: "PassField",
-          value: "",
-          label: "パスワード",
           id: 2,
+          label: "パスワード",
+          value: "",
+          formType: "PassField",
         },
       ],
       sendButtonLabel: "パスを送る",
+      isPush:false,
     };
   },
   methods: {
     changeFormValue(value: string, id: number) {
       this.logInDataList[id - 1].value = value;
     },
+    showPass(){
+      (this as any).isPush = true;
+    }
   },
 });
 </script>
