@@ -63,6 +63,10 @@ export default defineComponent({
     },
     showPass(){
       (this as any).isPush = true;
+      (this as any).$store.dispatch("auth/signUp",{
+        id: this.logInDataList[0].value,
+        password: this.logInDataList[1].value,
+      })
     }
   },
 });
