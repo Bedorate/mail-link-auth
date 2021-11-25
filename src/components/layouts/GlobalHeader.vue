@@ -2,7 +2,9 @@
   <div class="global-header">
     <div class="global-header-left">
       <div class="global-header-left-icon">
-        メアドにパスを送信機
+        <router-link to="/">登録</router-link>
+        /
+        <router-link to="/signin">サインイン</router-link>
       </div>
     </div>
   </div>

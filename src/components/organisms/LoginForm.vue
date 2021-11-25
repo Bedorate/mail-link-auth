@@ -8,12 +8,10 @@
         @change-value="changeFormValue"
       />
       <div class="common-button">
-        <CommonButton :label="sendButtonLabel" @click-event="showPass"/>
-        <div v-if="isPush">
-          {{logInDataList[0].value}}に
-          <br>
-          パスワード『{{logInDataList[1].value}}』を送信しました。
-        </div>
+        <CommonButton :label="sendButtonLabel" @click-event="sendMail"/>
+        <!-- <div v-if="isPush">
+          {{logInDataList[0].value}}にメールを送信しました。
+        </div> -->
       </div>
     </div>
   </div>
@@ -53,7 +51,7 @@ export default defineComponent({
           formType: "PassField",
         },
       ],
-      sendButtonLabel: "パスを送る",
+      sendButtonLabel: "登録",
       isPush:false,
     };
   },
@@ -61,12 +59,13 @@ export default defineComponent({
     changeFormValue(value: string, id: number) {
       this.logInDataList[id - 1].value = value;
     },
-    showPass(){
+    sendMail(){
       (this as any).isPush = true;
-      (this as any).$store.dispatch("auth/signUp",{
-        id: this.logInDataList[0].value,
-        password: this.logInDataList[1].value,
-      })
+      (this as any).$router.push("/complete");
+      // (this as any).$store.dispatch("auth/signUp",{
+      //   id: this.logInDataList[0].value,
+      //   password: this.logInDataList[1].value,
+      // })
     }
   },
 });
@@ -79,6 +78,7 @@ export default defineComponent({
   }
 }
 .common-button {
+  width: 300px;
   padding: 50px 100px 0px 100px;
 }
 </style>
