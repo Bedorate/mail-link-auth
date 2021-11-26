@@ -28,6 +28,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.page{
+  // text-align: center;
+}
 
 </style>
 

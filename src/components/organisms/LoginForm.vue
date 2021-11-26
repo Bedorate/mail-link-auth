@@ -74,11 +74,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 .form {
   &-component {
-    padding: 50px 100px 0px 100px;
+    margin: 0 auto;
+    width:400px;
+    padding-top:50px;
   }
 }
 .common-button {
-  width: 300px;
-  padding: 50px 100px 0px 100px;
+  width: 386px;
+  padding-top:30px;
+  padding-left:200px;
 }
 </style>

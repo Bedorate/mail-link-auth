@@ -46,7 +46,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .form-component {
   width: 100%;
-  height: 100%;
+  height: auto;
   padding: 8px;
   &-label {
     height: 24px;
