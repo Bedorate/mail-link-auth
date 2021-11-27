@@ -25,7 +25,6 @@ import CommonButton from "@/components/atoms/CommonButton.vue";
 type ILogInDataType = {
   logInDataList: ILogInDataList[];
   isPush: boolean;
-  label:string;
 };
 
 export default defineComponent({
@@ -33,6 +32,13 @@ export default defineComponent({
   components: {
     FormComponent,
     CommonButton,
+  },
+  props:{
+    label: {
+      //ボタンの中に表示する文字列
+      type: String,
+      required: true,
+    },
   },
   data(): ILogInDataType {
     return {
@@ -51,7 +57,6 @@ export default defineComponent({
         },
       ],
       isPush: false,
-      label:"登録"
     };
   },
   computed: {

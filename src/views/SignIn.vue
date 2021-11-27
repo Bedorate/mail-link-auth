@@ -11,6 +11,7 @@ import LoginForm from '@/components/organisms/LoginForm.vue';
 type mailInfo = {
   mailAdress: string;
   password:string;
+  label:string;
 }
 
 export default defineComponent({
@@ -22,6 +23,7 @@ export default defineComponent({
     return{
       mailAdress:"",
       password:"",
+      label:"サインイン",
     }
   },
 });
