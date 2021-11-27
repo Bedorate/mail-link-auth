@@ -1,13 +1,36 @@
 <template>
-  
+  <div class="page">
+    <LoginForm :label="label"/>
+  </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+import LoginForm from '@/components/organisms/LoginForm.vue';
 
+type mailInfo = {
+  mailAdress: string;
+  password:string;
 }
+
+export default defineComponent({
+  name: 'Home',
+  components:{
+    LoginForm,
+  },
+  data():mailInfo{
+    return{
+      mailAdress:"",
+      password:"",
+    }
+  },
+});
 </script>
 
-<style>
+<style lang="scss" scoped>
+.page{
+  // text-align: center;
+}
 
 </style>
+

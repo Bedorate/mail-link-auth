@@ -8,10 +8,7 @@
         @change-value="changeFormValue"
       />
       <div class="common-button">
-        <CommonButton :label="sendButtonLabel" @click-event="sendMail"/>
-        <!-- <div v-if="isPush">
-          {{logInDataList[0].value}}にメールを送信しました。
-        </div> -->
+        <CommonButton :label="label" @click-event="sendMail" />
       </div>
     </div>
   </div>
@@ -20,14 +17,16 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import FormComponent,{PropFormType as ILogInDataList,} from "@/components/molecules/FormComponent.vue";
+import FormComponent, {
+  PropFormType as ILogInDataList,
+} from "@/components/molecules/FormComponent.vue";
 import CommonButton from "@/components/atoms/CommonButton.vue";
 
 type ILogInDataType = {
-  logInDataList:ILogInDataList[];
-  sendButtonLabel:string;
-  isPush:boolean;
-}; 
+  logInDataList: ILogInDataList[];
+  isPush: boolean;
+  label:string;
+};
 
 export default defineComponent({
   name: "LoginForm",
@@ -35,11 +34,11 @@ export default defineComponent({
     FormComponent,
     CommonButton,
   },
-  data() :ILogInDataType {
+  data(): ILogInDataType {
     return {
       logInDataList: [
         {
-          id: 1, 
+          id: 1,
           label: "メールアドレス",
           value: "",
           formType: "TextField",
@@ -51,22 +50,32 @@ export default defineComponent({
           formType: "PassField",
         },
       ],
-      sendButtonLabel: "登録",
-      isPush:false,
+      isPush: false,
+      label:"登録"
     };
+  },
+  computed: {
+    label(): string {
+      //登録またはサインイン
+      return (this as any).label;
+    },
   },
   methods: {
     changeFormValue(value: string, id: number) {
       this.logInDataList[id - 1].value = value;
     },
-    sendMail(){
+    sendMail() {
       (this as any).isPush = true;
       (this as any).$router.push("/complete");
       // (this as any).$store.dispatch("auth/signUp",{
       //   id: this.logInDataList[0].value,
       //   password: this.logInDataList[1].value,
       // })
-    }
+      (this as any).$store.dispatch(
+        "auth/fetchSignIn",
+        this.logInDataList[0].value
+      );
+    },
   },
 });
 </script>
@@ -75,13 +84,13 @@ export default defineComponent({
 .form {
   &-component {
     margin: 0 auto;
-    width:400px;
-    padding-top:50px;
+    width: 400px;
+    padding-top: 50px;
   }
 }
 .common-button {
   width: 386px;
-  padding-top:30px;
-  padding-left:200px;
+  padding-top: 30px;
+  padding-left: 200px;
 }
 </style>
