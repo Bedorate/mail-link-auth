@@ -59,12 +59,6 @@ export default defineComponent({
       isPush: false,
     };
   },
-  computed: {
-    label(): string {
-      //登録またはサインイン
-      return (this as any).label;
-    },
-  },
   methods: {
     changeFormValue(value: string, id: number) {
       this.logInDataList[id - 1].value = value;
@@ -80,6 +74,7 @@ export default defineComponent({
         "auth/fetchSignIn",
         this.logInDataList[0].value
       );
+      (this as any).$store.dispatch("auth/sendSignInLinkToEmail",this.logInDataList[0].value)
     },
   },
 });
